@@ -11,20 +11,20 @@ import Protected from "./components/Protected";
 import cookie from "js-cookie";
 import axios from "axios";
 import jwt from "jsonwebtoken";
-import AllStudents from "./pages/students/AllStudents";
-import AddStudent from "./pages/students/AddStudent";
-import UpdateStudent from "./pages/students/UpdateStudent";
+// import AllStudents from "./pages/students/AllStudents";
+// import AddStudent from "./pages/students/AddStudent";
+// import UpdateStudent from "./pages/students/UpdateStudent";
 import HomePage from "./pages/home/HomePage";
 import LoginPage from "./pages/login/LoginPage";
 import styled from "styled-components";
 import NavBar from "./components/NavBar";
+import Sidebar from "./components/SideBar";
 
 const Main = styled.main`
-  width: 100%;
+  width: 80%;
   margin: 5rem auto 0;
-  padding-left: 0;
+  padding-left: 4rem;
 `;
-
 
 const App = () => {
   const [token, setToken] = useState(null);
@@ -71,7 +71,7 @@ const App = () => {
               component={(props) => <HomePage />}
             />
 
-            <Protected
+            {/* <Protected
               isAuth={token}
               exact={true}
               path="/students"
@@ -89,11 +89,11 @@ const App = () => {
               exact={true}
               path="/students/edit/:id"
               component={(props) => <UpdateStudent />}
-            />
+            /> */}
             <NavBar />
+            <Sidebar />
+            <Redirect from="/*" to="/" />
           </Main>
-
-          <Redirect from="/*" to="/" />
         </Switch>
       </Router>
     </UserContext.Provider>
