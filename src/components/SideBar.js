@@ -45,17 +45,17 @@ const Sidebar = () => {
             <SideNav.Toggle />
             {/* {navOpener ? <SideNav.Toggle /> : <div className="toggleHolder" />} */}
             <SideNav.Nav defaultSelected="home">
-              <NavItem eventKey="home">
+              <NavItem eventKey="">
                 <NavIcon>
                   <RiDashboardLine size="2rem" />
                 </NavIcon>
                 <NavText>Dashboard</NavText>
               </NavItem>
-              <NavItem eventKey="Teachers">
+              <NavItem eventKey="admins">
                 <NavIcon>
                   <GiTeacher size="2rem" />
                 </NavIcon>
-                <NavText>Teachers</NavText>
+                <NavText>Admins</NavText>
               </NavItem>
               <NavItem eventKey="students">
                 <NavIcon>
@@ -63,11 +63,11 @@ const Sidebar = () => {
                 </NavIcon>
                 <NavText>Students</NavText>
               </NavItem>
-              <NavItem eventKey="Classes">
+              <NavItem eventKey="schools">
                 <NavIcon>
                   <GiBlackBook fontSize="1.75rem" />
                 </NavIcon>
-                <NavText>Classes</NavText>
+                <NavText>Schools</NavText>
               </NavItem>
             </SideNav.Nav>
           </SideNav>
