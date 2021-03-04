@@ -92,6 +92,7 @@ const App = () => {
               component={(props) => <UpdateStudent />}
             />
 
+
             <Protected
               isAuth={token}
               exact={true}
