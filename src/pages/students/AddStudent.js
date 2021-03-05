@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button, Card } from "react-bootstrap";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect, withRouter } from "react-router-dom";
 import axios from "axios";
 
 const AddStudent = (e) => {
@@ -60,23 +60,21 @@ const AddStudent = (e) => {
     await axios
       .post(url, body, {
         headers: {
-          "content-type": "multipart/form-data",
+          // "content-type": "multipart/form-data",
           Accept: "application/json",
-          Authorization: "Bearer " + localStorage.getItem("token"),
+          // Authorization: "Bearer " + localStorage.getItem("token"),
         },
       })
       .then((res) => {
-        if (res.data.message) {
-          console.log(res.data.message);
-        } else {
-          setRedirect(true);
-        }
+        console.log(res.data);
+        setRedirect(true);
       });
-    if (redirect) {
-      return <Redirect to="/students" />;
-    }
+  
   };
 
+  if (redirect) {
+    return (<Redirect push to="/students" />);
+  }
   return (
     <>
       <Card className="text-center">
@@ -196,4 +194,4 @@ const AddStudent = (e) => {
   );
 };
 
-export default AddStudent;
+export default withRouter(AddStudent);

@@ -3,6 +3,8 @@ import axios from "axios";
 import { Link, useParams, Redirect } from "react-router-dom";
 import { Table, Card, Button } from "react-bootstrap";
 import { Confirm } from "react-st-modal";
+import "./view.css";
+
 const ViewStudent = (props) => {
   let params = useParams(props);
   // console.log(params.id);
