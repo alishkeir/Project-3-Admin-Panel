@@ -27,10 +27,10 @@ const Sidebar = () => {
   // 	};
   // }, []);
   return (
-    <Route
+    <Route 
       render={({ location, history }) => (
         <>
-          <SideNav
+          <SideNav style={{backgroundColor:'#005da3'}}
             expanded={istoggled}
             onToggle={() => {
               setIsToggled(!istoggled);
