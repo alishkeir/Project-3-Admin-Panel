@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Form, Button, Card } from "react-bootstrap";
-import { Link, Redirect, useParams } from "react-router-dom";
+import { Link, Redirect, useParams, withRouter } from "react-router-dom";
 import axios from "axios";
 
 const UpdateStudent = () => {
-  let params=useParams();
+  let params = useParams();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -78,28 +78,27 @@ const UpdateStudent = () => {
     await axios
       .post(url, body, {
         headers: {
-          // "content-type": "multipart/form-data",
+          "content-type": "multipart/form-data",
           Accept: "application/json",
           // Authorization: "Bearer " + localStorage.getItem("token"),
         },
       })
       .then((res) => {
-        if (res.data.message) {
-          console.log(res.data.message);
-        } else {
-          setRedirect(true);
-        }
-      });
-    if (redirect) {
-      return <Redirect to="/students" />;
-    }
-  };
+        console.log(res);
+        setRedirect(true);
 
+
+      });
+  };
+  if (redirect) {
+   return (<Redirect push to="/students" />);
+
+  }
   return (
     <>
       <Card className="text-center">
         <Card.Header>
-          <h4>Create a Student</h4>
+          <h4>Update Student</h4>
         </Card.Header>
         <Card.Body>
           <Link to={"/students"}>
@@ -199,7 +198,7 @@ const UpdateStudent = () => {
 
         <div className="form-group">
           <Button className="btn btn-primary" type="submit">
-            Create
+            Update
           </Button>
         </div>
       </Form>
@@ -207,4 +206,4 @@ const UpdateStudent = () => {
   );
 };
 
-export default UpdateStudent;
+export default withRouter(UpdateStudent);
