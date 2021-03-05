@@ -25,7 +25,7 @@ const NavBar = () => {
   const [hover, setHover] = useState("");
 
   return (
-    <Nav>
+    <Nav style={{backgroundColor:'#006ca1'}}>
       {hover ? (
         <IoPersonCircleSharp
           onMouseEnter={() => setHover(true)}

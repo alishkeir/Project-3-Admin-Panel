@@ -20,7 +20,8 @@ import styled from "styled-components";
 import NavBar from "./components/NavBar";
 import Sidebar from "./components/SideBar";
 import ViewStudent from "./pages/students/ViewStudent";
-
+import AllSchools from './pages/schools/AllSchools'
+import AddSchool from './pages/schools/AddSchool'
 const Main = styled.main`
   width: 80%;
   margin: 5rem auto 0;
@@ -98,7 +99,18 @@ const App = () => {
               path="/students/view/:id"
               component={(props) => <ViewStudent {...props} />}
             />
-
+            <Protected
+              isAuth={token}
+              exact={true}
+              path="/schools/"
+              component={(props) => <AllSchools {...props} />}
+            />
+               <Protected
+              isAuth={token}
+              exact={true}
+              path="/schools/add"
+              component={(props) => <AddSchool />}
+            />
             <NavBar />
             <Sidebar />
             <Redirect from="/*" to="/" />
