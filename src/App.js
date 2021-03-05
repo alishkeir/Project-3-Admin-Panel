@@ -18,13 +18,14 @@ import HomePage from "./pages/home/HomePage";
 import LoginPage from "./pages/login/LoginPage";
 import styled from "styled-components";
 import NavBar from "./components/NavBar";
+import Sidebar from "./components/SideBar";
+import ViewStudent from "./pages/students/ViewStudent";
 
 const Main = styled.main`
-  width: 100%;
+  width: 80%;
   margin: 5rem auto 0;
-  padding-left: 0;
+  padding-left: 4rem;
 `;
-
 
 const App = () => {
   const [token, setToken] = useState(null);
@@ -90,10 +91,18 @@ const App = () => {
               path="/students/edit/:id"
               component={(props) => <UpdateStudent />}
             />
-            <NavBar />
-          </Main>
 
-          <Redirect from="/*" to="/" />
+            <Protected
+              isAuth={token}
+              exact={true}
+              path="/students/view/:id"
+              component={(props) => <ViewStudent {...props} />}
+            />
+
+            <NavBar />
+            <Sidebar />
+            <Redirect from="/*" to="/" />
+          </Main>
         </Switch>
       </Router>
     </UserContext.Provider>
